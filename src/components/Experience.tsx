@@ -1,3 +1,4 @@
+import { Briefcase } from "lucide-react";
 import { Label } from "./ui/label";
 
 const experiences = [
@@ -22,7 +23,7 @@ const Experience = () => {
   return (
     <div className="flex flex-col w-full space-y-10">
       <Label className="text-primary-white text-2xl font-bold">
-        Experience
+        <Briefcase size={20} /> Experience
       </Label>
 
       {/* Timeline wrapper */}

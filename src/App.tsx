@@ -4,6 +4,8 @@ import { Separator } from "./components/ui/separator";
 import Experience from "./components/Experience";
 import { Label } from "./components/ui/label";
 import { Copyright } from "lucide-react";
+import TechStack from "./components/TechStack";
+import FAQ from "./components/Faq";
 
 function App() {
   const vantaRef = useRef<HTMLDivElement>(null);
@@ -35,19 +37,24 @@ function App() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="relative w-full min-h-screen">
-      <div
-        ref={vantaRef}
-        className="absolute inset-0 -z-10"
-      />
-
+    <div
+      ref={vantaRef}
+      className="relative w-full min-h-screen"
+    >
       {/* content */}
-      <div className="flex flex-col w-full max-w-2xl mx-auto p-8 space-y-10">
+      <div className="flex flex-col w-full max-w-4xl mx-auto p-8 space-y-10">
         <Head />
 
         <Separator className="bg-secondary-white" />
 
         <Experience />
+
+        <Separator />
+
+        <div className="flex flex-col md:flex-row md:h-140.5 lg:h-124.5 w-full gap-3">
+          <TechStack />
+          <FAQ />
+        </div>
 
         <Separator />
 
