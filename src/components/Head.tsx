@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin } from "lucide-react";
+import { CodeXml, Linkedin, Mail, MapPin } from "lucide-react";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 
@@ -9,7 +9,7 @@ const Head = () => {
       <div className="flex flex-row items-center gap-3">
         <div className="bg-green-500 h-2 w-2 rounded-md overflow-hidden" />
         <Label className="text-primary-white text-base">
-          Available for hire.
+          Available for hire. <CodeXml size={20} />
         </Label>
       </div>
 
@@ -19,7 +19,7 @@ const Head = () => {
           Hey, I'm Philippe
         </Label>
         <Label className="text-primary-white font-bold text-3xl md:text-5xl">
-          a{" "}
+          a
           <Label className="text-secondary-white font-bold text-3xl md:text-5xl">
             Software Engineer.
           </Label>
