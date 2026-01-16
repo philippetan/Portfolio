@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import Head from "./components/Head";
 import { Separator } from "./components/ui/separator";
-import Experience from "./components/Experience";
 import { Label } from "./components/ui/label";
 import { Copyright } from "lucide-react";
+
+import Intro from "./components/Intro";
+import Experience from "./components/Experience";
 import TechStack from "./components/TechStack";
 import FAQ from "./components/Faq";
 
@@ -43,20 +44,20 @@ function App() {
     >
       {/* content */}
       <div className="flex flex-col w-full max-w-4xl mx-auto p-8 space-y-10">
-        <Head />
+        <Intro />
 
         <Separator className="bg-secondary-white" />
 
         <Experience />
 
-        <Separator />
+        <Separator className="bg-secondary-white" />
 
-        <div className="flex flex-col md:flex-row md:h-140.5 lg:h-124.5 w-full gap-3">
+        <div className="flex flex-col md:flex-row h-full md:h-150 lg:h-130 w-full gap-3">
           <TechStack />
           <FAQ />
         </div>
 
-        <Separator />
+        {/* <Separator /> */}
 
         {/* footer */}
         <Label className="flex w-full justify-center text-primary-white font-light">

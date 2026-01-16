@@ -1,4 +1,4 @@
-import { CodeXml, Linkedin, Mail, MapPin } from "lucide-react";
+import { CodeXml, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 
@@ -48,6 +48,13 @@ const Head = () => {
           className="cursor-pointer"
         >
           <Linkedin /> LinkedIn
+        </Button>
+
+        <Button
+          variant="secondary"
+          className="cursor-pointer"
+        >
+          <Github /> GitHub
         </Button>
       </div>
 

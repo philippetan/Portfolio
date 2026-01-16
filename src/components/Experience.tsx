@@ -29,7 +29,7 @@ const Experience = () => {
       {/* Timeline wrapper */}
       <div className="relative w-full">
         {/* Center vertical line */}
-        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-primary-white/30" />
+        <div className="absolute left-1/2 top-0 h-60 w-0.5 -translate-x-1/2 bg-primary-white/30" />
 
         {experiences.map((exp, index) => {
           const isRight = index % 2 === 0;
@@ -42,7 +42,7 @@ const Experience = () => {
             >
               {/* Center dot */}
               <div
-                className={`absolute left-1/2 top-1 w-4 h-4 -translate-x-1/2 rounded-full z-10 ${
+                className={`absolute left-1/2 top-0 w-4 h-4 -translate-x-1/2 rounded-full z-10 ${
                   isFirst
                     ? "bg-primary-white" // filled
                     : "border-2 border-primary-white bg-[#141414]" // outline
@@ -51,7 +51,7 @@ const Experience = () => {
 
               {/* Content */}
               <div
-                className={`w-1/2 ${
+                className={`w-1/2 -mt-1 ${
                   isRight
                     ? "ml-[50%] pl-6 text-left"
                     : "mr-[50%] pr-6 text-right"

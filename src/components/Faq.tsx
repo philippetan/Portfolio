@@ -57,7 +57,7 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <Card className="bg-transparent h-96 md:h-full w-full flex flex-col p-6 md:w-1/2">
+    <Card className="bg-transparent h-130 md:h-full w-full flex flex-col p-6 md:w-1/2">
       <CardTitle>
         <Label className="text-primary-white text-lg font-bold">
           <CircleQuestionMark size={20} /> FAQ

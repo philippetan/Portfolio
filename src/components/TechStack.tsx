@@ -6,6 +6,7 @@ import { Label } from "./ui/label";
 const Frontend = [
   "React",
   "React Native",
+  "Flutter",
   "JavaScript",
   "TypeScript",
   "Next.js",
@@ -41,7 +42,7 @@ const DeveloperTools = [
 const TechStack = () => {
   return (
     <div className="flex flex-col h-full w-full md:w-1/2 gap-3">
-      <Card className="bg-transparent">
+      <Card className="bg-transparent h-full">
         <CardContent className="space-y-2">
           <Label className="text-primary-white text-lg font-bold">
             <Monitor size={20} /> Frontend
@@ -59,7 +60,7 @@ const TechStack = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="bg-transparent">
+      <Card className="bg-transparent h-full">
         <CardContent className="space-y-2">
           <Label className="text-primary-white text-lg font-bold">
             <Server size={20} /> Backend
@@ -77,7 +78,7 @@ const TechStack = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="bg-transparent">
+      <Card className="bg-transparent h-full">
         <CardContent className="space-y-2">
           <Label className="text-primary-white text-lg font-bold">
             <Wrench size={20} /> Developer Tools
