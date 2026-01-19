@@ -6,7 +6,7 @@ const Head = () => {
   return (
     <div className="flex flex-col h-full w-full space-y-10 pt-20 md:pt-24">
       {/* available for hire */}
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center justify-center lg:justify-start gap-3">
         <div className="bg-green-500 h-2 w-2 rounded-md overflow-hidden" />
         <Label className="text-primary-white text-base">
           Available for hire. <CodeXml size={20} />
@@ -14,7 +14,7 @@ const Head = () => {
       </div>
 
       {/* hey, i'm philippe */}
-      <div className="space-y-3">
+      <div className="space-y-3 flex flex-col items-center lg:items-start">
         <Label className="text-primary-white font-bold text-3xl md:text-5xl">
           Hey, I'm Philippe
         </Label>
@@ -27,7 +27,7 @@ const Head = () => {
       </div>
 
       {/* address */}
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center justify-center lg:justify-start gap-3">
         <MapPin className="text-primary-white size-5" />
         <Label className="text-primary-white text-base md:text-lg font-light">
           Liloan, Cebu, Philippines, 6002
@@ -35,30 +35,47 @@ const Head = () => {
       </div>
 
       {/* buttons */}
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center justify-center lg:justify-start gap-3">
         <Button
+          asChild
           variant="secondary"
           className="cursor-pointer"
         >
-          <Mail /> Email
+          <a href="mailto:philippe21tan@gmail.com">
+            <Mail /> Email
+          </a>
         </Button>
 
         <Button
+          asChild
           variant="secondary"
           className="cursor-pointer"
         >
-          <Linkedin /> LinkedIn
+          <a
+            href="https://www.linkedin.com/in/tan-philippe/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin /> LinkedIn
+          </a>
         </Button>
 
         <Button
+          asChild
           variant="secondary"
           className="cursor-pointer"
         >
-          <Github /> GitHub
+          <a
+            href="https://github.com/philippetan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github /> GitHub
+          </a>
         </Button>
       </div>
 
-      {/* my name */}
+      {/* introduction */}
       <Label className="text-secondary-white text-base md:text-lg font-light text-justify">
         My name is Philippe Tan, and I am a Software Engineer from Cebu with a
         passion for creating intuitive and engaging web applications. I love

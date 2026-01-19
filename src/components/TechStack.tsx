@@ -15,6 +15,7 @@ const Frontend = [
   "Vite",
   "Prettier",
   "Laravel Blade",
+  "Styled Components",
 ];
 
 const Backend = [

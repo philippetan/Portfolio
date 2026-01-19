@@ -27,9 +27,9 @@ const Experience = () => {
       </Label>
 
       {/* Timeline wrapper */}
-      <div className="relative w-full">
+      <div className="relative w-full h-full">
         {/* Center vertical line */}
-        <div className="absolute left-1/2 top-0 h-60 w-0.5 -translate-x-1/2 bg-primary-white/30" />
+        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-primary-white/30" />
 
         {experiences.map((exp, index) => {
           const isRight = index % 2 === 0;
@@ -38,7 +38,7 @@ const Experience = () => {
           return (
             <div
               key={index}
-              className="relative flex w-full mb-12"
+              className="relative flex w-full mb-10"
             >
               {/* Center dot */}
               <div
