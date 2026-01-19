@@ -57,9 +57,9 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <Card className="bg-transparent h-96 md:h-full w-full flex flex-col p-6 md:w-1/2">
+    <Card className="bg-transparent border-secondary-dark h-130 md:h-full w-full flex flex-col p-6 md:w-1/2">
       <CardTitle>
-        <Label className="text-primary-white text-lg font-bold">
+        <Label className="text-primary-dark dark:text-primary-white text-lg font-bold">
           <CircleQuestionMark size={20} /> FAQ
         </Label>
       </CardTitle>
@@ -74,10 +74,10 @@ const FAQ = () => {
               key={index}
               value={`item-${index}`}
             >
-              <AccordionTrigger className="font-bold text-primary-white cursor-pointer">
+              <AccordionTrigger className="font-bold text-primary-dark dark:text-primary-white cursor-pointer">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-primary-white">
+              <AccordionContent className="text-primary-dark dark:text-primary-white">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

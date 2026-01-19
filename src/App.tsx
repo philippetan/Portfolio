@@ -1,15 +1,23 @@
-import { useEffect, useRef } from "react";
-import Head from "./components/Head";
+import { useEffect, useRef, useState } from "react";
 import { Separator } from "./components/ui/separator";
-import Experience from "./components/Experience";
 import { Label } from "./components/ui/label";
 import { Copyright } from "lucide-react";
+
+import Intro from "./components/Intro";
+import Experience from "./components/Experience";
 import TechStack from "./components/TechStack";
 import FAQ from "./components/Faq";
 
 function App() {
+  const [mode, setMode] = useState<"light" | "dark">("light");
+
   const vantaRef = useRef<HTMLDivElement>(null);
   const vantaEffect = useRef<any>(null);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", mode === "dark");
+  }, [mode]);
 
   useEffect(() => {
     if (vantaRef.current) {
@@ -22,8 +30,8 @@ function App() {
         minWidth: 200,
         scale: 1.0,
         scaleMobile: 1.0,
-        color: "#4d1008",
-        backgroundColor: "#141414",
+        color: mode === "dark" ? "#4d1008" : "#aec2eb",
+        backgroundColor: mode === "dark" ? "#141414" : "#ebebeb",
       });
 
       vantaEffect.current = vantaEffectInstance;
@@ -32,7 +40,7 @@ function App() {
         vantaEffectInstance.destroy();
       };
     }
-  }, []);
+  }, [mode]);
 
   const currentYear = new Date().getFullYear();
 
@@ -43,23 +51,26 @@ function App() {
     >
       {/* content */}
       <div className="flex flex-col w-full max-w-4xl mx-auto p-8 space-y-10">
-        <Head />
+        <Intro
+          mode={mode}
+          setMode={setMode}
+        />
 
-        <Separator className="bg-secondary-white" />
+        <Separator className="bg-secondary-dark dark:bg-secondary-white" />
 
         <Experience />
 
-        <Separator />
+        <Separator className="bg-secondary-dark dark:bg-secondary-white" />
 
-        <div className="flex flex-col md:flex-row md:h-140.5 lg:h-124.5 w-full gap-3">
+        <div className="flex flex-col md:flex-row h-full md:h-150 lg:h-130 w-full gap-3">
           <TechStack />
           <FAQ />
         </div>
 
-        <Separator />
+        {/* <Separator /> */}
 
         {/* footer */}
-        <Label className="flex w-full justify-center text-primary-white font-light">
+        <Label className="flex w-full justify-center text-primary-dark dark:text-primary-white font-light">
           <Copyright size={14} /> {currentYear} Philippe Tan. All rights
           reserved.
         </Label>
