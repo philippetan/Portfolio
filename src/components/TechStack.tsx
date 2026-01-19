@@ -43,9 +43,9 @@ const DeveloperTools = [
 const TechStack = () => {
   return (
     <div className="flex flex-col h-full w-full md:w-1/2 gap-3">
-      <Card className="bg-transparent h-full">
+      <Card className="bg-transparent h-full border-secondary-dark">
         <CardContent className="space-y-2">
-          <Label className="text-primary-white text-lg font-bold">
+          <Label className="text-primary-dark dark:text-primary-white text-lg font-bold">
             <Monitor size={20} /> Frontend
           </Label>
           <div className="space-x-2 space-y-2">
@@ -53,7 +53,7 @@ const TechStack = () => {
               <Badge
                 key={item}
                 variant="outline"
-                className="text-primary-white"
+                className="text-primary-dark dark:text-primary-white border-secondary-dark"
               >
                 {item}
               </Badge>
@@ -61,9 +61,9 @@ const TechStack = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="bg-transparent h-full">
+      <Card className="bg-transparent h-full border-secondary-dark">
         <CardContent className="space-y-2">
-          <Label className="text-primary-white text-lg font-bold">
+          <Label className="text-primary-dark dark:text-primary-white text-lg font-bold">
             <Server size={20} /> Backend
           </Label>
           <div className="space-x-2 space-y-2">
@@ -71,7 +71,7 @@ const TechStack = () => {
               <Badge
                 key={item}
                 variant="outline"
-                className="text-primary-white"
+                className="text-primary-dark dark:text-primary-white border-secondary-dark"
               >
                 {item}
               </Badge>
@@ -79,9 +79,9 @@ const TechStack = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="bg-transparent h-full">
+      <Card className="bg-transparent h-full border-secondary-dark">
         <CardContent className="space-y-2">
-          <Label className="text-primary-white text-lg font-bold">
+          <Label className="text-primary-dark dark:text-primary-white text-lg font-bold">
             <Wrench size={20} /> Developer Tools
           </Label>
           <div className="space-x-2 space-y-2">
@@ -89,7 +89,7 @@ const TechStack = () => {
               <Badge
                 key={item}
                 variant="outline"
-                className="text-primary-white"
+                className="text-primary-dark dark:text-primary-white border-secondary-dark"
               >
                 {item}
               </Badge>
