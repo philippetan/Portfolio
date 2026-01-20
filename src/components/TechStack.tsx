@@ -21,24 +21,17 @@ const Frontend = [
 const Backend = [
   "Node.js",
   "Firebase",
-  "Python",
-  "PHP",
+  "MySQL",
   "Express.js",
-  "FastAPI",
+  "PHP",
   "Laravel",
   "PostgreSQL",
-  "MySQL",
+  "Python",
+  "FastAPI",
   "REST",
 ];
 
-const DeveloperTools = [
-  "Git",
-  "GitHub",
-  "GitLab",
-  "VS Code",
-  "Discord",
-  "Teams",
-];
+const DeveloperTools = ["Git", "GitHub", "GitLab", "VS Code", "Discord", "Teams", "Android Studio"];
 
 const TechStack = () => {
   return (
