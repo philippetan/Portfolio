@@ -45,16 +45,14 @@ const Experience = () => {
                 className={`absolute left-1/2 top-0 w-4 h-4 -translate-x-1/2 rounded-full z-10 ${
                   isFirst
                     ? "bg-primary-dark dark:bg-primary-white" // filled
-                    : "border-2 border-primary-dark dark:border-primary-white bg-white dark:bg-[#141414]" // outline
+                    : "border-2 border-primary-dark dark:border-primary-white bg-primary-white dark:bg-[#141414]" // outline
                 }`}
               />
 
               {/* Content */}
               <div
                 className={`w-1/2 -mt-1 ${
-                  isRight
-                    ? "ml-[50%] pl-6 text-left"
-                    : "mr-[50%] pr-6 text-right"
+                  isRight ? "ml-[50%] pl-6 text-left" : "mr-[50%] pr-6 text-right"
                 }`}
               >
                 <div className="flex flex-col">
