@@ -7,6 +7,8 @@ import {
 } from "./ui/accordion";
 import { Card, CardContent, CardTitle } from "./ui/card";
 import { Label } from "./ui/label";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const faqs = [
   {
@@ -56,35 +58,46 @@ const faqs = [
 ];
 
 const FAQ = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.5, once: true });
+
   return (
-    <Card className="bg-transparent border-secondary-dark h-130 md:h-full w-full flex flex-col p-6 md:w-1/2">
-      <CardTitle>
-        <Label className="text-primary-dark dark:text-primary-white text-lg font-bold">
-          <CircleQuestionMark size={20} /> FAQ
-        </Label>
-      </CardTitle>
-      <CardContent className="p-0 flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar">
-        <Accordion
-          type="single"
-          collapsible
-          className="w-full"
-        >
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-            >
-              <AccordionTrigger className="font-bold text-primary-dark dark:text-primary-white cursor-pointer">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-primary-dark dark:text-primary-white">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </CardContent>
-    </Card>
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      ref={sectionRef}
+      className="h-130 md:h-full w-full md:w-1/2"
+    >
+      <Card className="flex flex-col bg-transparent border-secondary-dark p-6 h-full w-full">
+        <CardTitle>
+          <Label className="text-primary-dark dark:text-primary-white text-lg font-bold">
+            <CircleQuestionMark size={20} /> FAQ
+          </Label>
+        </CardTitle>
+        <CardContent className="p-0 flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+          >
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+              >
+                <AccordionTrigger className="font-bold text-primary-dark dark:text-primary-white cursor-pointer">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-primary-dark dark:text-primary-white">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
