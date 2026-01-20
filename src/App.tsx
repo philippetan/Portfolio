@@ -3,6 +3,7 @@ import { Separator } from "./components/ui/separator";
 import { Label } from "./components/ui/label";
 import { Copyright } from "lucide-react";
 import { Toaster } from "sonner";
+import { motion, useInView } from "framer-motion";
 
 import Intro from "./components/Intro";
 import Experience from "./components/Experience";
@@ -15,6 +16,9 @@ function App() {
   const vantaRef = useRef<HTMLDivElement>(null);
   const vantaEffect = useRef<any>(null);
 
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.2, once: true });
+
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark", mode === "dark");
@@ -23,7 +27,10 @@ function App() {
   useEffect(() => {
     if (!vantaRef.current) return;
 
-    const Effect = mode === "light" ? (window as any).VANTA.TOPOLOGY : (window as any).VANTA.NET;
+    const Effect =
+      mode === "light"
+        ? (window as any).VANTA.TOPOLOGY
+        : (window as any).VANTA.NET;
 
     const vantaEffectInstance = Effect({
       el: vantaRef.current,
@@ -59,22 +66,34 @@ function App() {
           setMode={setMode}
         />
 
-        <Separator className="bg-secondary-dark dark:bg-secondary-white" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.8 }}
+        >
+          <Separator className="bg-secondary-dark dark:bg-secondary-white" />
+        </motion.div>
 
         <Experience />
 
-        <Separator className="bg-secondary-dark dark:bg-secondary-white" />
+        <motion.div
+          ref={sectionRef}
+          initial={{ opacity: 0 }}
+          animate={isInView && { opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Separator className="bg-secondary-dark dark:bg-secondary-white" />
+        </motion.div>
 
         <div className="flex flex-col md:flex-row h-full md:h-150 lg:h-130 w-full gap-3">
           <TechStack />
           <FAQ />
         </div>
 
-        {/* <Separator /> */}
-
         {/* footer */}
         <Label className="flex w-full justify-center text-primary-dark dark:text-primary-white font-light">
-          <Copyright size={14} /> {currentYear} Philippe Tan. All rights reserved.
+          <Copyright size={14} /> {currentYear} Philippe Tan. All rights
+          reserved.
         </Label>
       </div>
 
