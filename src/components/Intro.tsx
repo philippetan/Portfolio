@@ -1,15 +1,8 @@
 import type { Dispatch, SetStateAction } from "react";
-import {
-  CodeXml,
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  Moon,
-  Sun,
-} from "lucide-react";
+import { CodeXml, Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 interface IntroProps {
   mode: "light" | "dark";
@@ -18,7 +11,13 @@ interface IntroProps {
 
 const Intro = ({ mode, setMode }: IntroProps) => {
   const toggleMode = () => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
+    const nextMode = mode === "light" ? "dark" : "light";
+
+    toast.success(nextMode === "dark" ? "Dark mode enabled" : "Light mode enabled", {
+      icon: nextMode === "dark" ? <Moon className="size-5" /> : <Sun className="size-5" />,
+    });
+
+    setMode(nextMode);
   };
 
   return (
@@ -69,7 +68,7 @@ const Intro = ({ mode, setMode }: IntroProps) => {
       <div className="flex flex-row items-center justify-center lg:justify-start gap-3">
         <Button
           asChild
-          variant="secondary"
+          variant="default"
           className="cursor-pointer"
         >
           <a href="mailto:philippe21tan@gmail.com">
@@ -79,7 +78,7 @@ const Intro = ({ mode, setMode }: IntroProps) => {
 
         <Button
           asChild
-          variant="secondary"
+          variant="default"
           className="cursor-pointer"
         >
           <a
@@ -93,7 +92,7 @@ const Intro = ({ mode, setMode }: IntroProps) => {
 
         <Button
           asChild
-          variant="secondary"
+          variant="default"
           className="cursor-pointer"
         >
           <a
@@ -108,10 +107,10 @@ const Intro = ({ mode, setMode }: IntroProps) => {
 
       {/* introduction */}
       <Label className="text-primary-dark dark:text-secondary-white text-base md:text-lg font-light text-justify">
-        My name is Philippe Tan, and I am a Software Engineer from Cebu with a
-        passion for creating intuitive and engaging web applications. I love
-        turning complex problems into simple, elegant solutions, exploring new
-        technologies, and building projects that make a real impact.
+        My name is Philippe Tan, and I am a Software Engineer from Cebu with a passion for creating
+        intuitive and engaging web applications. I love turning complex problems into simple,
+        elegant solutions, exploring new technologies, and building projects that make a real
+        impact.
       </Label>
     </div>
   );

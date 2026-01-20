@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Separator } from "./components/ui/separator";
 import { Label } from "./components/ui/label";
 import { Copyright } from "lucide-react";
+import { Toaster } from "sonner";
 
 import Intro from "./components/Intro";
 import Experience from "./components/Experience";
@@ -20,26 +21,28 @@ function App() {
   }, [mode]);
 
   useEffect(() => {
-    if (vantaRef.current) {
-      const vantaEffectInstance = (window as any).VANTA.NET({
-        el: vantaRef.current,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200,
-        minWidth: 200,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        color: mode === "dark" ? "#4d1008" : "#aec2eb",
-        backgroundColor: mode === "dark" ? "#141414" : "#ebebeb",
-      });
+    if (!vantaRef.current) return;
 
-      vantaEffect.current = vantaEffectInstance;
+    const Effect = mode === "light" ? (window as any).VANTA.TOPOLOGY : (window as any).VANTA.NET;
 
-      return () => {
-        vantaEffectInstance.destroy();
-      };
-    }
+    const vantaEffectInstance = Effect({
+      el: vantaRef.current,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200,
+      minWidth: 200,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: mode === "dark" ? "#4d1008" : "#aec2eb",
+      backgroundColor: mode === "dark" ? "#141414" : "#ebebeb",
+    });
+
+    vantaEffect.current = vantaEffectInstance;
+
+    return () => {
+      vantaEffectInstance.destroy();
+    };
   }, [mode]);
 
   const currentYear = new Date().getFullYear();
@@ -71,10 +74,20 @@ function App() {
 
         {/* footer */}
         <Label className="flex w-full justify-center text-primary-dark dark:text-primary-white font-light">
-          <Copyright size={14} /> {currentYear} Philippe Tan. All rights
-          reserved.
+          <Copyright size={14} /> {currentYear} Philippe Tan. All rights reserved.
         </Label>
       </div>
+
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            backgroundColor: `${mode === "dark" ? "#4a4a4a" : "#FFFFFF"}`,
+            borderColor: `${mode === "dark" ? "#4a4a4a" : "#FFFFFF"}`,
+            color: `${mode === "dark" && "#FFFFFF"}`,
+          },
+        }}
+      />
     </div>
   );
 }
