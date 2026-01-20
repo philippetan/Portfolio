@@ -3,6 +3,7 @@ import { CodeXml, Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 interface IntroProps {
   mode: "light" | "dark";
@@ -35,11 +36,17 @@ const Intro = ({ mode, setMode }: IntroProps) => {
           onClick={toggleMode}
           className="cursor-pointer"
         >
-          {mode === "dark" ? (
-            <Moon className="text-primary-white size-5" />
-          ) : (
-            <Sun className="text-primary-dark size-5" />
-          )}
+          <motion.div
+            whileHover={{ rotate: 20, scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            {mode === "dark" ? (
+              <Moon className="text-primary-white size-6" />
+            ) : (
+              <Sun className="text-primary-dark size-6" />
+            )}
+          </motion.div>
         </Button>
       </div>
 
