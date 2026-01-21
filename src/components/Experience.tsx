@@ -1,6 +1,7 @@
 import { Briefcase } from "lucide-react";
 import { Label } from "./ui/label";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const experiences = [
   {
@@ -21,15 +22,19 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const baseDelay = 2.4;
+  const baseDelay = 0.4;
   const increment = 0.2;
+
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.5, once: true });
 
   return (
     <div className="flex flex-col w-full space-y-10">
       <motion.div
+        ref={sectionRef}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 2.0 }}
+        animate={isInView && { opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0 }}
       >
         <Label className="text-primary-dark dark:text-primary-white text-2xl font-bold">
           <Briefcase size={20} /> Experience
@@ -40,9 +45,10 @@ const Experience = () => {
       <div className="relative w-full h-full">
         {/* Center vertical line */}
         <motion.div
+          ref={sectionRef}
           initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2.2 }}
+          animate={isInView && { opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-black/30 dark:bg-primary-white/30"
         />
 
@@ -61,7 +67,7 @@ const Experience = () => {
                   opacity: 0,
                   ...(isRight ? { x: 50 } : { x: -50 }),
                 }}
-                animate={{ opacity: 1, x: 0 }}
+                animate={isInView && { opacity: 1, x: 0 }}
                 transition={{
                   duration: 0.5,
                   ease: "easeOut",
@@ -80,16 +86,14 @@ const Experience = () => {
                   opacity: 0,
                   ...(isRight ? { x: 50 } : { x: -50 }),
                 }}
-                animate={{ opacity: 1, x: 0 }}
+                animate={isInView && { opacity: 1, x: 0 }}
                 transition={{
                   duration: 0.5,
                   ease: "easeOut",
                   delay: baseDelay + index * increment,
                 }}
                 className={`w-1/2 -mt-1 ${
-                  isRight
-                    ? "ml-[50%] pl-6 text-left"
-                    : "mr-[50%] pr-6 text-right"
+                  isRight ? "ml-[50%] pl-6 text-left" : "mr-[50%] pr-6 text-right"
                 }`}
               >
                 <div className="flex flex-col">
